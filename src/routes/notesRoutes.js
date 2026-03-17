@@ -11,7 +11,7 @@ const notesRouter = express.Router();
 
 notesRouter.get("/", getAllNotes);
 notesRouter.get("/:id", getNoteById);
-notesRouter.post("/", createNote);
+notesRouter.post("/create", createNote);
 notesRouter.put("/:id", updateNote);
 notesRouter.delete("/:id", deleteNote);
 
