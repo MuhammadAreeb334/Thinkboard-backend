@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 app.use(rateLimiter);
-app.use("/api/notes", notesRouter);
+app.use("/", notesRouter);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
