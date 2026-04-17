@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 const allowedOrigins = [
-  "http://localhost:5173",
+  // "http://localhost:5173",
   "https://thinkboard-frontend-olive.vercel.app",
 ];
 
