@@ -11,14 +11,14 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 const allowedOrigins = [
-  // "http://localhost:5173",
+  "http://localhost:5173",
   "https://thinkboard-frontend-olive.vercel.app",
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) {
-      return callback(new Error("No origin not allowed"));
+      return callback(null, true);
     }
 
     if (allowedOrigins.includes(origin)) {
@@ -36,8 +36,12 @@ app.use(express.json());
 app.use(rateLimiter);
 app.use("/", notesRouter);
 
-connectDB().then(() => {
+await connectDB();
+
+if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
   });
-});
+}
+
+export default app;
